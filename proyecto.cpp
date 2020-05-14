@@ -17,16 +17,12 @@ string BuscarColor(int m){
         flag = false;
 
     }
-    else if(i == 10){
+    else if(i == 10 || i == 28){
       ruleta.insert(pair<int,string>(i, "Negro"));
       flag = false;
     }
     else if(i == 19){
       ruleta.insert(pair<int,string>(i, "Rojo"));
-      flag = false;
-    }
-    else if(i == 28){
-      ruleta.insert(pair<int,string>(i, "Negro"));
       flag = false;
     }
     else{
