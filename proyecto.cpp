@@ -61,6 +61,31 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
   cout << "Negro: " << (PromedioNegro/2) * 10 << "%";
   }
 
+  int prediction(vector<int> numbers, int last){
+    std::vector<pair<int,int>> predic;
+    int numpre;
+    bool enter=0;
+    //llenar el vector con los numeros posibles a salir
+    for (unsigned i = 0; i < numbers.size(); i++) {
+      if (numbers[i]==last) {
+        numpre=numbers[i+1];
+        for (unsigned i = 0; i < predic.size(); i++) {
+          enter=0;
+          if (predic[i]==numpre) {
+            predic[i].second++;
+            enter=1;
+          }
+        if (enter==0) {
+          predic.push_back(make_pair(numpre, 1));
+        }
+        }
+      }
+    }
+    //calcular probabilidad de que salga el numero
+    for (unsigned i = 0; i < predic.size(); i++) {
+
+    }
+  }
 int main(){
   vector<pair<string,int>> prueba1;
   LlenarVector(prueba1);
