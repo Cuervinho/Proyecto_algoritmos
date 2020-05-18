@@ -6,4 +6,4 @@ La solución encontrada fue tomar la lista de números que salieron anteriorment
 Se ejecuta por medio de Python el archivo interfaz.py, el cual le permitira introducir los numeros que le van saliendo. El boton de calculo se habilita despues de las 20 entradas el cual le dara los porcentajes de color y a su vez una predicción de numeros dependiendo de la cantidad de input que haya introducido.
 
 # Ejemplo
-![Interfaz](https://imgur.com/787fc5b9-4bcd-4324-89ee-402abdc3a902)
+![Interfaz](blob:https://imgur.com/787fc5b9-4bcd-4324-89ee-402abdc3a902)
