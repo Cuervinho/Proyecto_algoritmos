@@ -61,32 +61,37 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
   cout << "Negro: " << (PromedioNegro/2) * 10 << "%";
   }
 
-  vector<pari<string,int>> prediction(vector<pair<string,int>> numbers){
+  vector<pair<int,float>> prediction(vector<pair<string,int>> numbers){
     std::vector<pair<int,float>> predic;
     int numpre;
     bool enter=0;
-    int last= numbers[number.size()-1].second;
+    int last= numbers[numbers.size()-1].second;
     numbers.pop_back();
     //llenar el vector con los numeros posibles a salir
     for (unsigned i = 0; i < numbers.size(); i++) {
-      if (numbers[i].first==last) {
-        numpre=numbers[i+1].first;
+      if (numbers[i].second==last) {
+        numpre=numbers[i+1].second;
         for (unsigned i = 0; i < predic.size(); i++) {
-          enter=0;
-          if (predic[i]==numpre) {
+          if (predic[i].first==numpre) {
             predic[i].second++;
             enter=1;
           }
-        if (enter==0) {
-          predic.push_back(make_pair(numpre, 1));
         }
+        if (enter==0) {
+          predic.push_back(make_pair(numpre,1));
+          enter=0;
         }
       }
     }
     //calcular probabilidad de que salga el numero
     for (unsigned i = 0; i < predic.size(); i++) {
-      predic[i].second=(predic[i].second/predic.size())*100
+      predic[i].second=(predic[i].second/predic.size())*100;
     }
+  if (predic.size()==0) {
+    cout << "Historial insuficiente" << '\n';
+    return predic;
+  }
+  cout << "Posibles numeros: " << '\n';
   return predic;
   }
 int main(){
@@ -96,5 +101,9 @@ int main(){
     cout << prueba1[i].first << "   " << prueba1[i].second << endl;
   }
   CalcularEstadisticas(prueba1);
-
+  cout << " " << '\n';
+  std::vector<pair<int,float>> v=prediction(prueba1);
+  for (unsigned i = 0; i < v.size(); i++) {
+    cout << v[i].first <<" - "<< v[i].second << '\n';
+  }
 }
