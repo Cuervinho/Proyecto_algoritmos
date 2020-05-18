@@ -84,8 +84,12 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
       }
     }
     //calcular probabilidad de que salga el numero
+    unsigned int size=0;
     for (unsigned i = 0; i < predic.size(); i++) {
-      predic[i].second=(predic[i].second/predic.size())*100;
+      size=predic[i].second+size;
+    }
+    for (unsigned i = 0; i < predic.size(); i++) {
+      predic[i].second=(predic[i].second/size*100;
     }
   if (predic.size()==0) {
     cout << "Historial insuficiente" << '\n';
