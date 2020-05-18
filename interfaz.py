@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter as tk
 from PIL import Image, ImageTk
+import os
+import subprocess
 
 
 
@@ -46,6 +48,21 @@ def clicked():
     if contador >= 20:
         btn1['state'] = tk.NORMAL
 
+
+def calcular():
+    x = subprocess.getoutput('g++ ' + "proyecto.cpp")
+    if x == "":                         # no error/warning messages
+        m = subprocess.getoutput("a.exe")     # run the program
+    else:
+        print(x)
+    nwin = Toplevel()
+    nwin.title("Predicción")
+    #photo2 = PhotoImage(file = 'image_part_'+"0"+m+".png")
+    #lbl2 = Label(nwin, image = photo2)
+    #lbl2.pack()
+    w = Label(nwin, text= m)
+    w.pack()
+    nwin.mainloop()
 
 
 

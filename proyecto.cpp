@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -36,6 +37,26 @@ string BuscarColor(int m){
 }
 
 void LlenarVector(vector<pair<string,int>> &valores){
+    ifstream inFile;
+    int x;
+    inFile.open("valores.txt");
+    if (!inFile) {
+      cout << "No se encontro el valor de los archivos creado por la interfaz.";
+      exit(1); // Salir del programa con error
+  }
+
+    while (inFile >> x) {
+      valores.push_back(make_pair("1",x));
+    }
+
+    inFile.close();
+
+      for(unsigned int i = 0; i < valores.size(); i++){
+        valores[i].first = BuscarColor(valores[i].second);
+      }
+}
+
+void LlenarVectorTesting(vector<pair<string,int>> &valores){
       srand(time(0));
       for(int i = 0; i < 100; i++){
         valores.push_back(make_pair("1", rand()%37));
@@ -99,14 +120,11 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
   return predic;
   }
 int main(){
-  vector<pair<string,int>> prueba1;
-  LlenarVector(prueba1);
-  for(unsigned int i = 0; i < prueba1.size(); i++){
-    cout << prueba1[i].first << "   " << prueba1[i].second << endl;
-  }
-  CalcularEstadisticas(prueba1);
+  vector<pair<string,int>> numeros;
+  LlenarVector(numeros);
+  CalcularEstadisticas(numeros);
   cout << " " << '\n';
-  std::vector<pair<int,float>> v=prediction(prueba1);
+  std::vector<pair<int,float>> v=prediction(numeros);
   for (unsigned i = 0; i < v.size(); i++) {
     cout << v[i].first <<" - "<< v[i].second <<"%"<< '\n';
   }
