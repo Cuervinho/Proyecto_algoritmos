@@ -37,10 +37,10 @@ string BuscarColor(int m){
 
 void LlenarVector(vector<pair<string,int>> &valores){
       srand(time(0));
-      for(int i = 0; i < 20; i++){
+      for(int i = 0; i < 100; i++){
         valores.push_back(make_pair("1", rand()%37));
       }
-      for(int i = 0; i < 20; i++){
+      for(int i = 0; i < 100; i++){
         valores[i].first = BuscarColor(valores[i].second);
       }
 }
@@ -71,6 +71,7 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
     for (unsigned i = 0; i < numbers.size(); i++) {
       if (numbers[i].second==last) {
         numpre=numbers[i+1].second;
+        enter=0;
         for (unsigned i = 0; i < predic.size(); i++) {
           if (predic[i].first==numpre) {
             predic[i].second++;
@@ -79,7 +80,6 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
         }
         if (enter==0) {
           predic.push_back(make_pair(numpre,1));
-          enter=0;
         }
       }
     }
@@ -104,6 +104,6 @@ int main(){
   cout << " " << '\n';
   std::vector<pair<int,float>> v=prediction(prueba1);
   for (unsigned i = 0; i < v.size(); i++) {
-    cout << v[i].first <<" - "<< v[i].second << '\n';
+    cout << v[i].first <<" - "<< v[i].second <<"%"<< '\n';
   }
 }
