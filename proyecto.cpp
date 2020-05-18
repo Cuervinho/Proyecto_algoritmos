@@ -57,8 +57,8 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
     }
   }
   cout << "El porcentaje en colores fue:   " << endl;
-  cout << "Rojo: " << (PromedioRojo/2) * 10 << "%" << endl;
-  cout << "Negro: " << (PromedioNegro/2) * 10 << "%";
+  cout << "Rojo: " << (PromedioRojo * 100)/valores.size() << "%" << endl;
+  cout << "Negro: " << (PromedioNegro * 100)/valores.size() << "%";
   }
 
   vector<pair<int,float>> prediction(vector<pair<string,int>> numbers){
@@ -89,7 +89,7 @@ void CalcularEstadisticas(vector<pair<string,int>> &valores){
       size=predic[i].second+size;
     }
     for (unsigned i = 0; i < predic.size(); i++) {
-      predic[i].second=(predic[i].second/size*100;
+      predic[i].second=(predic[i].second/size)*100;
     }
   if (predic.size()==0) {
     cout << "Historial insuficiente" << '\n';
